@@ -9,7 +9,7 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping("/api/translate")
+@RequestMapping("/translate")
 public class TransContoller {
 
     @Autowired
