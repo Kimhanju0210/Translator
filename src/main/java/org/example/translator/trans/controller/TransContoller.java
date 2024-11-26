@@ -15,7 +15,12 @@ public class TransContoller {
     @Autowired
     private TransService transService;
 
-    @PostMapping
+    @GetMapping("/home")
+    public String home() {
+        return "translate";
+    }
+
+    @PostMapping("/api")
     public Map<String, String> translate(@RequestBody Map<String, String> request) {
         String text = request.get("text");
         String from = request.get("from");
