@@ -42,15 +42,9 @@
             align-items: center;
         }
         .translator-container .language-select button {
-            background-color: #1EC28B;
-            color: white;
-            border: none;
-            padding: 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            position: relative;
-            font-size: 14px;
-            outline: none;
+            background-color: transparent;
+            color: #333;
+            border: 1px solid #ccc;
         }
         .translator-container .language-select button:focus {
             outline: none;
@@ -180,6 +174,22 @@
         const fromLanguage = document.getElementById('from-language-btn').textContent;
         const toLanguage = document.getElementById('to-language-btn').textContent;
 
+        const languageMap = {
+            '한국어': 'ko',
+            '영어': 'en',
+            '일본어': 'ja',
+            '중국어(간체)': 'zh-CN',
+            '스페인어': 'es',
+            '러시아어': 'ru',
+            '아랍어': 'ar',
+            '이탈리아어': 'it',
+            '프랑스어': 'fr',
+            '독일어': 'de'
+        };
+
+        const fromLanguageCode = languageMap[fromLanguage];
+        const toLanguageCode = languageMap[toLanguage];
+
         fetch('/translate/api', {
             method: 'POST',
             headers: {
@@ -187,15 +197,19 @@
             },
             body: JSON.stringify({
                 text: inputText,
-                from: fromLanguage,
-                to: toLanguage
+                from: fromLanguageCode,
+                to: toLanguageCode
             })
         })
             .then(response => response.json())
             .then(data => {
+                console.log('Response from server:', data);
                 document.querySelector('.output-text').value = data.translatedText;
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                alert('번역 중 오류가 발생했습니다.');
+            });
     });
 
     window.addEventListener('click', function(e) {
