@@ -1,3 +1,5 @@
+mymemory:
+  api-url: ${mymemory.api-url}
 
 naver:
   client:
