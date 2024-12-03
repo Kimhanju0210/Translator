@@ -1,7 +1,9 @@
 mymemory:
   api-url: ${mymemory.api-url}
 
-naver:
-  client:
-    id : ${naver.client.id}
-    secret : ${naver.client.secret}
+
+
+## naver:
+  ## client:
+    ## id : ${naver.client.id}
+    ## secret : ${naver.client.secret}
