@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
-public class TransConsole implements CommandLineRunner {
+public final class TransConsole implements CommandLineRunner {
 
     private final ConsoleService consoleService;
 
